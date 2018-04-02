@@ -1,0 +1,48 @@
+@import './Material/Button'
+@import './Material/Card'
+@import './Material/Color'
+@import './Material/Drawer' 
+@import './Material/Elevation'
+@import './Material/Input'
+@import './Material/List' 
+@import './Material/Toolbar' 
+@import './Material/Typography' 
+
+html, body
+    background-color #EEE
+    margin 0
+    padding 0
+    width 100vw
+    height 100vh
+    box-sizing border-box
+
+    > div
+        display grid
+        grid-template-rows auto 1fr
+        height 100%
+
+.toolbar
+    background-color palette('Amber')
+    grid-template-columns auto 1fr
+    grid-column-gap 16px
+    z-index 100
+        
+    .title, i
+        color palette('White', 'Text')
+
+nav
+    li
+        cursor pointer
+
+.page
+    display grid
+    grid-template-columns auto 1fr
+
+main 
+    padding 16px
+
+
+button.fab
+    position absolute
+    bottom 80px
+    right 16px

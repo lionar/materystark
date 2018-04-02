@@ -1,0 +1,29 @@
+.list
+    margin 0
+    padding 8px 0
+    list-style none
+
+    li
+        transition background-color 0.25s ease;
+        margin 0
+        padding 0 16px
+        display block
+        height 48px
+        display flex
+        align-items center
+        justify-content flex-start
+        overflow hidden
+
+        &:hover
+            background-color rgba(0,0,0,0.04)
+        
+        &:focus, &.active
+            background-color rgba(0,0,0,0.12)
+        
+
+nav 
+    .list
+        a
+            display grid
+            grid-template-columns auto 1fr
+            grid-column-gap 16px
