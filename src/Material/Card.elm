@@ -2,8 +2,12 @@ module Material.Card exposing (..)
 
 import Html exposing (div, Html)
 import Html.Attributes exposing (class)
-    
 
-card: List (Html msg) -> Html msg
-card =
-    div [ class "card elevationz1" ]
+
+card : Int -> List (Html.Attribute msg) -> List (Html msg) -> Html msg
+card elevation attributes =
+    let
+        level =
+            class <| "card elevationz" ++ (toString elevation)
+    in
+        div <| List.append [ level ] attributes

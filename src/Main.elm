@@ -1,11 +1,11 @@
 module Main exposing (main)
 
-import Html
-import App exposing (init, update, view)
+import App exposing (..)
+import Navigation
 
-
+main : Program Never Model Msg
 main =
-    Html.program
+    Navigation.program OnLocationChange
         { init = init
         , update = update
         , view = view
