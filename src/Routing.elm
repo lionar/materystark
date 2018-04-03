@@ -8,6 +8,7 @@ type Route
     = Typography
     | Lists
     | Elevation
+    | Buttons
     | NotFound
 
 
@@ -18,6 +19,7 @@ matchers =
         , map Typography (s "typography")
         , map Lists (s "lists")
         , map Elevation (s "elevation")
+        , map Buttons (s "buttons")
         ]
 
 

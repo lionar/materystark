@@ -8,15 +8,15 @@ import Html.Events exposing (onClick)
 import Material.Button as Button
 import Material.Icon as Icon
 import Navigation exposing (Location)
-import Routing
+import Routing exposing (Route)
 
 
 type alias Model =
     { open: Bool
-    , route: Routing.Route
+    , route: Route
     }
 
-initialModel: Routing.Route -> Model
+initialModel: Route -> Model
 initialModel route =
     { open = True
     , route = route
@@ -62,19 +62,19 @@ view model =
     div []
     [ div [ class "toolbar elevationz2" ]
         [ Button.icon "menu" [ onClick Toggle ]
-        , h1 [ class "title" ] [ text "Materystark®" ]
+        , h1 [ class "title" ] [ text (title model.route) ]
         ]
     , section [ class "page" ]
         [ drawer model
         , main_ []
-            [ page model
+            [ page model.route
             ]
         ]
     ]
 
-page : Model -> Html Msg
-page model =
-    case model.route of
+page : Route -> Html Msg
+page route =
+    case route of
         Routing.Typography ->
             typography
 
@@ -83,6 +83,9 @@ page model =
 
         Routing.Elevation ->
             elevation
+
+        Routing.Buttons ->
+            h1 [ class "title" ] [ text "Buttons" ]
 
         Routing.NotFound ->
             h1 [] [ text "Not found." ]
@@ -98,16 +101,41 @@ drawer model =
                 "drawer closed elevationz1"
     in
         div [ class classes ]
-        [ mainnav
+        [ mainnav model
         ]
 
-mainnav: Html msg
-mainnav =
+mainnav: Model -> Html msg
+mainnav model =
     nav []
         [ ul [ class "list" ]
-            [ li [ class "active" ] [ a [ href "/#/typography" ] [ Icon.basic "text_fields", text "Typography" ] ]
-            , li [] [ a [ href "/#/lists" ] [ Icon.basic "view_list", text "Lists" ] ]
-            , li [] [ a [ href "/#/elevation" ] [ Icon.basic "layers", text "Elevation" ] ]
-            , li [] [ a [ href "/#/buttons" ] [ Icon.basic "add_circle_outline", text "Buttons" ] ]
+            [ item model.route Routing.Typography "/#/typography" "text_fields" "Typography"
+            , item model.route Routing.Lists "/#/lists" "view_list" "Lists"
+            , item model.route Routing.Elevation "/#/elevation" "layers" "Elevation"
+            , item model.route Routing.Buttons "/#/buttons" "add_circle_outline" "Buttons"
             ]
         ]
+
+item: Route -> Route -> String -> String -> String -> Html msg
+item current item link icon label =
+    let active =
+        if current == item then
+            "active"
+        else
+            ""
+    in
+        li [ class active ] [ a [ href link ] [ Icon.basic icon, text label ] ]
+
+
+title: Route -> String
+title route =
+    case route of
+        Routing.Typography ->
+            "Typography"
+        Routing.Lists ->
+            "Lists"
+        Routing.Elevation ->
+            "Elevation"
+        Routing.Buttons ->
+            "Buttons"
+        Routing.NotFound ->
+            "Not found"
