@@ -1,5 +1,6 @@
 module App exposing (..)
 
+import Demo.Buttons exposing (buttons)
 import Demo.Elevation exposing (elevation)
 import Demo.Typography exposing (typography)
 import Html exposing (..)
@@ -85,7 +86,7 @@ page route =
             elevation
 
         Routing.Buttons ->
-            h1 [ class "title" ] [ text "Buttons" ]
+            buttons
 
         Routing.NotFound ->
             h1 [] [ text "Not found." ]
