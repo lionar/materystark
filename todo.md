@@ -2,3 +2,4 @@
 
 - Simplify layout
 - Extend layout
+- Theming

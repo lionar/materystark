@@ -47,6 +47,13 @@ button
         padding-right 8px
         padding-left 8px
 
+    &.flat
+        color rgb(33, 33, 33)
+        transition: background-color .28s cubic-bezier(.4, 0, .2, 1)
+        
+        &:hover
+            background-color: rgba(@color, 0.04)
+
     &.raised
         @extend .elevationz2
 
@@ -65,6 +72,10 @@ button.fab
     height 56px
     border-radius 50%
     @extends .elevationz5
+    transition: background-color .28s cubic-bezier(.4, 0, .2, 1)
+
+    &:hover
+        @extends .elevationz8
 
 
 @keyframes ripple
