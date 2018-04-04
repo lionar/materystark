@@ -1,4 +1,4 @@
 # Todo
 
-- Flat button
-- Raised button
+- Simplify layout
+- Extend layout

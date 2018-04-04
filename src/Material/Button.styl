@@ -1,3 +1,5 @@
+@import './Elevation'
+
 button
     position relative
     overflow hidden
@@ -27,7 +29,6 @@ button
     &:not(:active):after
         animation ripple 1s ease-out
 
-
     &:after
         visibility hidden
 
@@ -46,6 +47,12 @@ button
         padding-right 8px
         padding-left 8px
 
+    &.raised
+        @extend .elevationz2
+
+        &:hover
+            @extend .elevationz4
+
 button.icon
     padding 0
     margin 0
@@ -57,6 +64,7 @@ button.fab
     width 56px
     height 56px
     border-radius 50%
+    @extends .elevationz5
 
 
 @keyframes ripple

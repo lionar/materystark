@@ -11,7 +11,7 @@ buttons =
     card 1 []
         [ section []
             [ h1 [ class "title" ] [ text "FAB" ]
-            , fab
+            , fab "add"
             ]
         , section []
             [ h1 [ class "title" ] [ text "Icon button" ]
@@ -19,10 +19,10 @@ buttons =
             ]
         , section []
             [ h1 [ class "title" ] [ text "Flat button" ]
-            , Button.flat
+            , Button.flat [] [ text "Flat" ]
             ]
         , section []
             [ h1 [ class "title" ] [ text "Raised button" ]
-            , Button.raised
+            , Button.raised [] [ text "Raised" ]
             ]
         ]

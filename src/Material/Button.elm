@@ -5,14 +5,14 @@ import Html.Attributes exposing (class)
 import Material.Icon as Icon
 
 
-fab : Html msg
-fab =
-    button [ class "fab elevationz5" ] [ Icon.basic "add" ]
+fab : String -> Html msg
+fab icon =
+    button [ class "fab" ] [ Icon.basic icon ]
 
 
-flat : Html msg
-flat =
-    button [ class "flat" ] [ text "Flat button" ]
+flat : List (Html.Attribute msg) -> List (Html msg) -> Html msg
+flat attributes html =
+    button (List.append [ class "flat" ] attributes) html
 
 
 icon : String -> List (Html.Attribute msg) -> Html msg
@@ -21,6 +21,6 @@ icon symbol attributes =
     [ Icon.basic symbol
     ]
 
-raised : Html msg
-raised =
-    button [ class "raised elevationz2" ] [ text "Raised button" ]
+raised : List (Html.Attribute msg) -> List (Html msg) -> Html msg
+raised attributes html =
+    button (List.append [ class "raised" ] attributes) html
