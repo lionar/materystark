@@ -1,6 +1,7 @@
 module App exposing (..)
 
 import Demo.Buttons exposing (buttons)
+import Demo.Checkbox exposing (checkboxes)
 import Demo.Elevation exposing (elevation)
 import Demo.Lists exposing (lists)
 import Demo.Typography exposing (typography)
@@ -89,8 +90,11 @@ page route =
         Routing.Buttons ->
             buttons
 
+        Routing.Checkbox ->
+            checkboxes
+
         Routing.NotFound ->
-            h1 [] [ text "Not found." ]
+            h1 [ class "title" ] [ text "Not found." ]
 
 
 drawer: Model -> Html msg
@@ -114,6 +118,7 @@ mainnav model =
             , item model.route Routing.Lists "/#/lists" "view_list" "Lists"
             , item model.route Routing.Elevation "/#/elevation" "layers" "Elevation"
             , item model.route Routing.Buttons "/#/buttons" "add_circle_outline" "Buttons"
+            , item model.route Routing.Checkbox "/#/checkbox" "check_box" "Checkbox"
             ]
         ]
 
@@ -139,5 +144,7 @@ title route =
             "Elevation"
         Routing.Buttons ->
             "Buttons"
+        Routing.Checkbox ->
+            "Checkbox"
         Routing.NotFound ->
             "Not found"

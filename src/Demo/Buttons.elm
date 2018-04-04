@@ -9,13 +9,20 @@ import Material.Card exposing (card)
 buttons: Html msg
 buttons =
     card 1 []
-        [ section [] 
+        [ section []
             [ h1 [ class "title" ] [ text "FAB" ]
             , fab
             ]
-        , section [] 
+        , section []
             [ h1 [ class "title" ] [ text "Icon button" ]
             , Button.icon "menu" []
             ]
+        , section []
+            [ h1 [ class "title" ] [ text "Flat button" ]
+            , Button.flat
+            ]
+        , section []
+            [ h1 [ class "title" ] [ text "Raised button" ]
+            , Button.raised
+            ]
         ]
-    

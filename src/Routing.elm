@@ -9,6 +9,7 @@ type Route
     | Lists
     | Elevation
     | Buttons
+    | Checkbox
     | NotFound
 
 
@@ -20,6 +21,7 @@ matchers =
         , map Lists (s "lists")
         , map Elevation (s "elevation")
         , map Buttons (s "buttons")
+        , map Checkbox (s "checkbox")
         ]
 
 
