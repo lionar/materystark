@@ -10,6 +10,7 @@ type Route
     | Elevation
     | Buttons
     | Checkbox
+    | Toolbar
     | NotFound
 
 
@@ -22,6 +23,7 @@ matchers =
         , map Elevation (s "elevation")
         , map Buttons (s "buttons")
         , map Checkbox (s "checkbox")
+        , map Toolbar (s "toolbar")
         ]
 
 

@@ -93,6 +93,9 @@ page route =
         Routing.Checkbox ->
             checkboxes
 
+        Routing.Toolbar ->
+            h1 [ class "Title" ] [ text "Toolbar" ]
+
         Routing.NotFound ->
             h1 [ class "title" ] [ text "Not found." ]
 
@@ -119,6 +122,7 @@ mainnav model =
             , item model.route Routing.Elevation "/#/elevation" "layers" "Elevation"
             , item model.route Routing.Buttons "/#/buttons" "add_circle_outline" "Buttons"
             , item model.route Routing.Checkbox "/#/checkbox" "check_box" "Checkbox"
+            , item model.route Routing.Toolbar "/#/toolbar" "payment" "Toolbar"
             ]
         ]
 
@@ -146,5 +150,7 @@ title route =
             "Buttons"
         Routing.Checkbox ->
             "Checkbox"
+        Routing.Toolbar ->
+            "Toolbar"
         Routing.NotFound ->
             "Not found"
