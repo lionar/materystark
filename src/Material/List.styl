@@ -2,6 +2,11 @@
     margin 0
     padding 8px 0
     list-style none
+    font-size 1rem
+    font-weight 400
+    color rgb(33, 33, 33)
+    line-height 1.5rem
+    letter-spacing 0.04em
 
     li
         transition background-color 0.25s ease;
@@ -12,6 +17,7 @@
         align-items center
         justify-content flex-start
         overflow hidden
+        padding 0 16px
 
         &:hover
             background-color rgba(0,0,0,0.04)
@@ -19,14 +25,23 @@
         &:focus, &.active
             background-color rgba(0,0,0,0.12)
 
+    &.dense
+        padding-top 4px
+        padding-bottom 4px
+        font-size .812rem
+
+        li
+            height 40px
 
 nav
     .list
+        li
+            padding 0
         a
             cursor pointer
             display grid
             grid-template-columns auto 1fr
-            grid-column-gap 16px
+            grid-column-gap 32px
             text-decoration none
             color rgb(33, 33, 33)
             width 100%

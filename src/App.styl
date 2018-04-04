@@ -12,17 +12,21 @@
 @import './Demo/Demo'
 
 html, body
-    background-color #EEE
     margin 0
     padding 0
-    width 100vw
-    height 100vh
-    box-sizing border-box
+    background-color #EEE
 
+
+body
     > div
+        box-sizing border-box
+        width 100vw
+        height 100vh
         display grid
         grid-template-rows auto 1fr
-        height 100%
+        overflow hidden
+        min-width 0
+        min-height 0
 
 .toolbar
     background-color palette('Amber')
@@ -36,6 +40,12 @@ html, body
 .page
     display grid
     grid-template-columns auto 1fr
+    min-width 0
+    min-height 0
 
 main
+    box-sizing border-box
+    position relative
+    display block
+    overflow-y scroll
     padding 16px

@@ -2,6 +2,7 @@ module App exposing (..)
 
 import Demo.Buttons exposing (buttons)
 import Demo.Elevation exposing (elevation)
+import Demo.Lists exposing (lists)
 import Demo.Typography exposing (typography)
 import Html exposing (..)
 import Html.Attributes exposing (class, href, type_)
@@ -80,7 +81,7 @@ page route =
             typography
 
         Routing.Lists ->
-            h1 [ class "title" ] [ text "Lists" ]
+            lists
 
         Routing.Elevation ->
             elevation
