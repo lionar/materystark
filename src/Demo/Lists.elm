@@ -8,17 +8,27 @@ import Material.Icon as Icon
 
 lists : Html msg
 lists =
-    div [ card, elevationz1, id "lists-demo" ]
-        [ h2 [ class "header" ] [ text "Text only" ]
-        , textList
-        , h2 [ class "header" ] [ text "Text only (dense)" ]
-        , denseList
-        , h2 [ class "headers" ] [ text "Graphic list" ]
-        , graphicList
-        , h2 [ class "headers" ] [ text "Graphic list (dense)" ]
-        , graphicDenseList
-        , h2 [ class "headers" ] [ text "Graphic Example - Icon with Text" ]
-        , iconList
+    div [ card, elevation 1, id "lists-demo" ]
+        [ section []
+            [ h2 [ class "header" ] [ text "Text only" ]
+            , textList
+            ]
+        , section []
+            [ h2 [ class "header" ] [ text "Text only (dense)" ]
+            , denseList
+            ]
+        , section []
+            [ h2 [ class "headers" ] [ text "Graphic list" ]
+            , graphicList
+            ]
+        , section []
+            [ h2 [ class "headers" ] [ text "Graphic list (dense)" ]
+            , graphicDenseList
+            ]
+        , section []
+            [ h2 [ class "headers" ] [ text "Graphic Example - Icon with Text" ]
+            , iconList
+            ]
         ]
 
 

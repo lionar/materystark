@@ -7,7 +7,7 @@ import Material.Button exposing (fab, iconbutton)
 
 buttons: Html msg
 buttons =
-    div [ card, elevationz1 ]
+    div [ card, elevation 1 ]
         [ section []
             [ h1 [ title ] [ text "FAB" ]
             , fab [] "add"

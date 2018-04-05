@@ -2,12 +2,15 @@ module App exposing (..)
 
 import Demo.Buttons exposing (buttons)
 import Demo.Checkbox exposing (checkboxes)
-import Demo.Elevation exposing (elevation)
+import Demo.Elevation as Elevation
 import Demo.Lists exposing (lists)
+import Demo.Menu as Menu
+import Demo.Toolbar as Toolbar
 import Demo.Typography exposing (typography)
 import Html exposing (..)
 import Html.Attributes exposing (class, href, type_)
 import Html.Events exposing (onClick)
+import Material.Attributes exposing (..)
 import Material.Button exposing (iconbutton)
 import Material.Icon as Icon
 import Navigation exposing (Location)
@@ -19,7 +22,8 @@ type alias Model =
     , route: Route
     }
 
-initialModel: Route -> Model
+
+initialModel : Route -> Model
 initialModel route =
     { open = True
     , route = route
@@ -33,7 +37,6 @@ init location =
             Routing.parseLocation location
     in
         initialModel currentRoute ! []
-
 
 
 -- UPDATE
@@ -63,17 +66,20 @@ update message model =
 view : Model -> Html Msg
 view model =
     div []
-    [ div [ class "toolbar elevationz2" ]
-        [ iconbutton [ onClick Toggle ] "menu"
-        , h1 [ class "title" ] [ text (title model.route) ]
+    [ div [ class "app-bar", toolbar, elevation 2 ]
+        [ section []
+            [ iconbutton [ onClick Toggle ] "menu"
+            , h1 [ title ] [ text (pageTitle model.route) ]
+            ]
         ]
     , section [ class "page" ]
-        [ drawer model
+        [ sidenav model
         , main_ []
             [ page model.route
             ]
         ]
     ]
+
 
 page : Route -> Html Msg
 page route =
@@ -85,7 +91,7 @@ page route =
             lists
 
         Routing.Elevation ->
-            elevation
+            Elevation.demo
 
         Routing.Buttons ->
             buttons
@@ -94,39 +100,46 @@ page route =
             checkboxes
 
         Routing.Toolbar ->
-            h1 [ class "Title" ] [ text "Toolbar" ]
+            Toolbar.standard
+
+        Routing.Menu ->
+            Menu.standard
 
         Routing.NotFound ->
-            h1 [ class "title" ] [ text "Not found." ]
+            h1 [ title ] [ text "Not found." ]
 
 
-drawer: Model -> Html msg
-drawer model =
+
+sidenav : Model -> Html msg
+sidenav model =
     let
-        classes =
+        state =
             if model.open then
-                "drawer elevationz1"
+                class ""
             else
-                "drawer closed elevationz1"
+                closed
     in
-        div [ class classes ]
+        div [ state, drawer, elevation 1 ]
         [ mainnav model
         ]
 
-mainnav: Model -> Html msg
+
+mainnav : Model -> Html msg
 mainnav model =
     nav []
-        [ ul [ class "list" ]
+        [ ul [ list ]
             [ item model.route Routing.Typography "/#/typography" "text_fields" "Typography"
             , item model.route Routing.Lists "/#/lists" "view_list" "Lists"
             , item model.route Routing.Elevation "/#/elevation" "layers" "Elevation"
             , item model.route Routing.Buttons "/#/buttons" "add_circle_outline" "Buttons"
             , item model.route Routing.Checkbox "/#/checkbox" "check_box" "Checkbox"
             , item model.route Routing.Toolbar "/#/toolbar" "payment" "Toolbar"
+            , item model.route Routing.Menu "/#/menu" "chrome_reader_mode" "Menu"
             ]
         ]
 
-item: Route -> Route -> String -> String -> String -> Html msg
+
+item : Route -> Route -> String -> String -> String -> Html msg
 item current item link icon label =
     let active =
         if current == item then
@@ -137,20 +150,29 @@ item current item link icon label =
         li [ class active ] [ a [ href link ] [ Icon.basic icon, text label ] ]
 
 
-title: Route -> String
-title route =
+pageTitle : Route -> String
+pageTitle route =
     case route of
         Routing.Typography ->
             "Typography"
+
         Routing.Lists ->
             "Lists"
+
         Routing.Elevation ->
             "Elevation"
+
         Routing.Buttons ->
             "Buttons"
+
         Routing.Checkbox ->
             "Checkbox"
+
         Routing.Toolbar ->
             "Toolbar"
+
+        Routing.Menu ->
+            "Menu"
+
         Routing.NotFound ->
             "Not found"

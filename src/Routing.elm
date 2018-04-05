@@ -11,6 +11,7 @@ type Route
     | Buttons
     | Checkbox
     | Toolbar
+    | Menu
     | NotFound
 
 
@@ -24,6 +25,7 @@ matchers =
         , map Buttons (s "buttons")
         , map Checkbox (s "checkbox")
         , map Toolbar (s "toolbar")
+        , map Menu (s "menu")
         ]
 
 

@@ -6,7 +6,7 @@ import Material.Attributes exposing (..)
 
 typography: Html msg
 typography =
-    div [ card, elevationz1 ]
+    div [ card, elevation 1 ]
         [ h2 [ display4 ] [ text "Light112sp" ]
         , h2 [ display3 ] [ text "Regular56sp" ]
         , h3 [ display2 ] [ text "Regular45sp" ]

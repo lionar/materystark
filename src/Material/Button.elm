@@ -5,7 +5,7 @@ import Html.Attributes exposing (class)
 import Material.Icon as Icon
 
 
-fab :  List (Html.Attribute msg) -> String -> Html msg
+fab : List (Html.Attribute msg) -> String -> Html msg
 fab attributes icon =
     button (List.append [ class "fab" ] attributes ) [ Icon.basic icon ]
 
