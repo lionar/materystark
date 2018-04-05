@@ -3,7 +3,7 @@ module Demo.Lists exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (class, id)
 import Material.Attributes exposing (..)
-import Material.Icon as Icon
+import Material.Icon exposing (icon)
 
 
 lists : Html msg
@@ -67,7 +67,7 @@ graphicDenseList =
 iconList : Html msg
 iconList =
     ul [ class "list graphic" ]
-        [ li [] [ Icon.basic "wifi", text "Wi-Fi" ]
-        , li [] [ Icon.basic "bluetooth", text "Bluetooth" ]
-        , li [] [ Icon.basic "data_usage", text "Data Usage" ]
+        [ li [] [ icon "wifi", text "Wi-Fi" ]
+        , li [] [ icon "bluetooth", text "Bluetooth" ]
+        , li [] [ icon "data_usage", text "Data Usage" ]
         ]

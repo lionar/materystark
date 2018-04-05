@@ -1,6 +1,8 @@
-@import 'Elevation.styl'
+@import './Elevation'
+@import './Material'
 
 .list
+    cursor default
     margin 0
     padding 8px 0
     list-style none
@@ -42,6 +44,7 @@ nav
         li
             padding 0
         a
+            user-select none
             cursor pointer
             display grid
             grid-template-columns auto 1fr
@@ -59,10 +62,12 @@ nav.menu
     elevationz2()
     background-color #fff
     width 200px
-    border-radius 2px
+    border-radius rounded-corners
 
     section
         border-top 1px solid rgba(0, 0, 0, 0.12)
 
     a
+        cursor pointer
         padding 0 16px
+        user-select none

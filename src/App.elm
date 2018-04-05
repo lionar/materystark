@@ -12,20 +12,23 @@ import Html.Attributes exposing (class, href, type_)
 import Html.Events exposing (onClick)
 import Material.Attributes exposing (..)
 import Material.Button exposing (iconbutton)
-import Material.Icon as Icon
+import Material.Icon exposing (icon)
 import Navigation exposing (Location)
 import Routing exposing (Route)
+import Types exposing (..)
 
 
 type alias Model =
-    { open: Bool
+    { drawer: Bool
+    , menu: Bool
     , route: Route
     }
 
 
 initialModel : Route -> Model
 initialModel route =
-    { open = True
+    { drawer = True
+    , menu = True
     , route = route
     }
 
@@ -42,16 +45,14 @@ init location =
 -- UPDATE
 
 
-type Msg
-    = Toggle
-    | OnLocationChange Location
-
-
 update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
-        Toggle ->
-            { model | open = not model.open } ! []
+        ToggleDrawer ->
+            { model | drawer = not model.drawer } ! []
+
+        ToggleMenu ->
+            { model | menu = not model.menu } ! []
 
         OnLocationChange location ->
             let
@@ -68,7 +69,7 @@ view model =
     div []
     [ div [ class "app-bar", toolbar, elevation 2 ]
         [ section []
-            [ iconbutton [ onClick Toggle ] "menu"
+            [ iconbutton [ onClick ToggleDrawer ] "menu"
             , h1 [ title ] [ text (pageTitle model.route) ]
             ]
         ]
@@ -114,7 +115,7 @@ sidenav : Model -> Html msg
 sidenav model =
     let
         state =
-            if model.open then
+            if model.drawer then
                 class ""
             else
                 closed
@@ -140,14 +141,14 @@ mainnav model =
 
 
 item : Route -> Route -> String -> String -> String -> Html msg
-item current item link icon label =
+item current item link symbol label =
     let active =
         if current == item then
             "active"
         else
             ""
     in
-        li [ class active ] [ a [ href link ] [ Icon.basic icon, text label ] ]
+        li [ class active ] [ a [ href link ] [ icon symbol, text label ] ]
 
 
 pageTitle : Route -> String

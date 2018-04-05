@@ -1,6 +1,7 @@
 module Main exposing (main)
 
 import App exposing (..)
+import Types exposing (..)
 import Navigation
 
 main : Program Never Model Msg

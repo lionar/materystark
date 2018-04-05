@@ -1,17 +1,9 @@
 @import './Elevation'
+@import './Material'
 
-button
-    position relative
-    overflow hidden
-    background-color transparent
-    border none
-    cursor pointer
-
-    &:focus
-        border none
-        outline none
-
-     &:after
+// ripple
+ripple()
+    &:after
         content ''
         display block
         position absolute
@@ -35,6 +27,26 @@ button
     &:focus:after
         visibility visible
 
+@keyframes ripple
+  0%
+    transform scale(0)
+
+  20%
+    transform scale(1)
+
+  100%
+    opacity 0;
+    transform scale(1)
+// end ripple
+
+button
+    position relative
+    overflow hidden
+    background-color transparent
+    border none
+    cursor pointer
+    ripple()
+
     &.flat, &.raised
         font-size 0.875rem
         line-height 2.25rem
@@ -42,7 +54,7 @@ button
         letter-spacing 0.04em
         text-decoration none
         text-transform uppercase
-        border-radius 2px
+        border-radius rounded-corners
         padding-right 8px
         padding-left 8px
 
@@ -56,6 +68,7 @@ button
     &.raised
         elevationz2()
         transition box-shadow .28s cubic-bezier(.4, 0, .2, 1)
+        background-color #fff
 
         &:hover
             elevationz4()
@@ -65,36 +78,28 @@ button
             box-shadow none
             cursor default
 
-button.icon
-    padding 0
-    margin 0
-    border-radius 50%
-    width 40px
-    height 40px
 
-    &:hover
-        transition background-color .28s ease
-        background-color rgba(255,255,255,0.1)
-
-button.fab
-    width 56px
-    height 56px
-    border-radius 50%
-    elevationz5()
-    transition background-color .28s cubic-bezier(.4, 0, .2, 1)
-    transition box-shadow .28s cubic-bezier(.4, 0, .2, 1)
-
-    &:hover
-        elevationz8()
+    &.icon, &.fab
+        border-radius 50%
 
 
-@keyframes ripple
-  0%
-    transform scale(0)
+    &.icon
+        padding 0
+        margin 0
+        
+        width 40px
+        height 40px
 
-  20%
-    transform scale(1)
+        &:hover
+            transition background-color .28s ease
+            background-color rgba(255,255,255,0.1)
 
-  100%
-    opacity 0;
-    transform scale(1)
+    &.fab
+        width 56px
+        height 56px
+        elevationz5()
+        transition background-color .28s cubic-bezier(.4, 0, .2, 1)
+        transition box-shadow .28s cubic-bezier(.4, 0, .2, 1)
+
+        &:hover
+            elevationz8()
