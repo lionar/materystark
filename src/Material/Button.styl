@@ -54,10 +54,10 @@ button
             background-color: rgba(@color, 0.04)
 
     &.raised
-        @extend .elevationz2
+        elevationz2()
 
         &:hover
-            @extend .elevationz4
+            elevationz4()
 
         &[disabled]
             background-color rgba(0, 0, 0, 0.12)
@@ -79,11 +79,11 @@ button.fab
     width 56px
     height 56px
     border-radius 50%
-    @extends .elevationz5
+    elevationz5()
     transition background-color .28s cubic-bezier(.4, 0, .2, 1)
 
     &:hover
-        @extends .elevationz8
+        elevationz8()
 
 
 @keyframes ripple
