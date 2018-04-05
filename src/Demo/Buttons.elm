@@ -1,28 +1,34 @@
 module Demo.Buttons exposing (..)
 
-import Html exposing (h1, Html, section, text)
+import Html exposing (button, div, h1, Html, section, text)
 import Html.Attributes exposing (class)
-import Material.Button as Button exposing (fab)
+import Material.Button as Button exposing (disabled, fab, flat, iconbutton, raised)
 import Material.Card exposing (card)
-
+import Material.Elevation exposing (elevationz1)
 
 buttons: Html msg
 buttons =
-    card 1 []
+    div [ card, elevationz1 ]
         [ section []
             [ h1 [ class "title" ] [ text "FAB" ]
-            , fab "add"
+            , fab "add" []
             ]
         , section []
             [ h1 [ class "title" ] [ text "Icon button" ]
-            , Button.icon "menu" []
+            , iconbutton [] "menu"
             ]
         , section []
             [ h1 [ class "title" ] [ text "Flat button" ]
-            , Button.flat [] [ text "Flat" ]
+            , button [ flat ] [ text "Flat" ]
             ]
         , section []
             [ h1 [ class "title" ] [ text "Raised button" ]
-            , Button.raised [] [ text "Raised" ]
+            , button [ raised ] [ text "Raised" ]
+            ]
+        , section []
+            [ h1 [ class "title" ] [ text "Disabled button" ]
+            , button [ raised, disabled ] [ text "Raised" ]
             ]
         ]
+
+

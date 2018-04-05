@@ -3,12 +3,13 @@ module Demo.Lists exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (class, id)
 import Material.Card exposing (card)
+import Material.Elevation exposing (elevationz1)
 import Material.Icon as Icon
 
 
 lists : Html msg
 lists =
-    card 1 [ id "lists-demo" ]
+    div [ card, elevationz1, id "lists-demo" ]
         [ h2 [ class "header" ] [ text "Text only" ]
         , textList
         , h2 [ class "header" ] [ text "Text only (dense)" ]

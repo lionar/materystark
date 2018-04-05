@@ -8,7 +8,7 @@ import Demo.Typography exposing (typography)
 import Html exposing (..)
 import Html.Attributes exposing (class, href, type_)
 import Html.Events exposing (onClick)
-import Material.Button as Button
+import Material.Button exposing (iconbutton)
 import Material.Icon as Icon
 import Navigation exposing (Location)
 import Routing exposing (Route)
@@ -64,7 +64,7 @@ view : Model -> Html Msg
 view model =
     div []
     [ div [ class "toolbar elevationz2" ]
-        [ Button.icon "menu" [ onClick Toggle ]
+        [ iconbutton [ onClick Toggle ] "menu"
         , h1 [ class "title" ] [ text (title model.route) ]
         ]
     , section [ class "page" ]
