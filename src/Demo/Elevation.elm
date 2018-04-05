@@ -2,8 +2,8 @@ module Demo.Elevation exposing (..)
 
 import Html exposing (div, h1, Html, section, text)
 import Html.Attributes exposing (class, id)
-import Material.Card exposing (card)
-import Material.Elevation exposing (..)
+import Material.Attributes exposing (..)
+
 
 elevation: Html msg
 elevation =

@@ -1,9 +1,8 @@
 module Demo.Typography exposing (..)
 
 import Html exposing (div, h1, h2, h3, Html, p, text)
-import Material.Card exposing (card)
-import Material.Elevation exposing (elevationz1)
-import Material.Typography exposing (..)
+import Material.Attributes exposing (..)
+
 
 typography: Html msg
 typography =
